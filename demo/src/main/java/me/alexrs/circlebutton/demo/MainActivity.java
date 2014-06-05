@@ -18,12 +18,19 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final CircularButton button = (CircularButton) findViewById(R.id.button);
+
+        //Here is shown how you can change the color of the button and shadow.
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getBaseContext(), "CLICK!", Toast.LENGTH_SHORT).show();
-                button.setButtonColor(Color.MAGENTA);
-                button.setShadowColor(Color.BLUE);
+                if (button.getButtonColor() == Color.WHITE) {
+                    button.setButtonColor(Color.BLACK);
+                    button.setShadowColor(Color.BLUE);
+                } else {
+                    button.setButtonColor(Color.WHITE);
+                    button.setShadowColor(Color.GRAY);
+                }
             }
         });
     }
