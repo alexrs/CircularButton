@@ -15,7 +15,7 @@ import android.widget.ImageView;
 public class CircularButton extends ImageView {
 
     /**
-     * The dimension of the shadow is a 15% of the radius of the button*
+     * The dimension of the shadow is a 15% of the radius of the button
      */
     private static float SHADOW_CONSTANT = 0.15F;
 

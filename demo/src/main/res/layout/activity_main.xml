@@ -9,6 +9,8 @@
     tools:context=".MainActivity">
 
     <me.alexrs.circularbutton.lib.CircularButton
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:buttonColor=""
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
