@@ -1,19 +1,25 @@
 package me.alexrs.circularbutton.lib;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 /**
  * Created by Alejandro on 06/06/14.
  */
-public class CircularButton extends TextView {
 
+/**
+ * A Google Plus like, circular button for Android.
+ * See https://github.com/Alexrs95/CircularButton
+ */
+public class CircularButton extends ImageView {
 
     /**
      * The dimension of the shadow is a 15% of the radius of the button
@@ -42,22 +48,25 @@ public class CircularButton extends TextView {
         init(context, attrs);
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     private void init(Context context, AttributeSet attrs) {
-        setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        setScaleType(ScaleType.CENTER_INSIDE);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        }
 
         mButtonPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mButtonPaint.setStyle(Paint.Style.FILL);
 
         if (attrs != null) {
-            TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CircularImageButton);
-            buttonColor = a.getColor(R.styleable.CircularImageButton_buttonColor, buttonColor);
-            shadowColor = a.getColor(R.styleable.CircularImageButton_shadowColor, shadowColor);
+            TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CircularButton);
+            buttonColor = a.getColor(R.styleable.CircularButton_buttonColor, buttonColor);
+            shadowColor = a.getColor(R.styleable.CircularButton_shadowColor, shadowColor);
             a.recycle();
         }
-
         setButtonColor(buttonColor);
     }
-
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -66,16 +75,16 @@ public class CircularButton extends TextView {
     }
 
     @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-
-        centerX = w / 2;
-        centerY = h / 2;
-        btnRadius = w / 2;
+    protected void onSizeChanged(int width, int height, int oldWidth, int oldHeight) {
+        super.onSizeChanged(width, height, oldWidth, oldHeight);
+        centerX = width / 2;
+        centerY = height / 2;
+        btnRadius = Math.min(width, height) / 2;
 
         //the shadow color is settled here because its dimension depends on the radius of the button
         setShadowColor(shadowColor);
     }
+
 
     public void setButtonColor(int color) {
         this.buttonColor = color;

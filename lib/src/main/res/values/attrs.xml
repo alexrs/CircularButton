@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="CircularImageButton">
+    <declare-styleable name="CircularButton">
         <attr name="shadowColor" format="color" />
         <attr name="buttonColor" format="color" />
     </declare-styleable>
