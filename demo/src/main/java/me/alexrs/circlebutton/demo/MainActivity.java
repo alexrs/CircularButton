@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import me.alexrs.circularbutton.lib.CircularButton;
+import me.alexrs.circularbutton.lib.CircularImageButton;
 
 
 public class MainActivity extends Activity {
@@ -17,7 +17,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final CircularButton button = (CircularButton) findViewById(R.id.button);
+        final CircularImageButton button = (CircularImageButton) findViewById(R.id.button);
 
         //Here is shown how you can change the color of the button and shadow.
         button.setOnClickListener(new View.OnClickListener() {

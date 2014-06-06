@@ -7,13 +7,12 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 /**
- * Created by Alejandro on 06/06/14.
+ * Created by Alejandro on 04/06/14.
  */
-public class CircularButton extends TextView {
-
+public class CircularImageButton extends ImageView {
 
     /**
      * The dimension of the shadow is a 15% of the radius of the button
@@ -27,22 +26,23 @@ public class CircularButton extends TextView {
     private int buttonColor = Color.WHITE;
     private int shadowColor = Color.GRAY;
 
-    public CircularButton(Context context) {
+    public CircularImageButton(Context context) {
         super(context);
         init(context, null);
     }
 
-    public CircularButton(Context context, AttributeSet attrs) {
+    public CircularImageButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
 
-    public CircularButton(Context context, AttributeSet attrs, int defStyle) {
+    public CircularImageButton(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(context, attrs);
     }
 
     private void init(Context context, AttributeSet attrs) {
+        setScaleType(ScaleType.CENTER_INSIDE);
         setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 
         mButtonPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -71,9 +71,8 @@ public class CircularButton extends TextView {
 
         centerX = w / 2;
         centerY = h / 2;
-        btnRadius = w / 2;
-
-        //the shadow color is settled here because its dimension depends on the radius of the button
+        btnRadius = Math.min(w, h) / 2;
+                //the shadow color is settled here because its dimension depends on the radius of the button
         setShadowColor(shadowColor);
     }
 
