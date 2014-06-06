@@ -17,8 +17,7 @@ You can delcare a `CircularButton` just like that:
         android:layout_height="wrap_content"
         android:src="@drawable/ic_launcher"
         app:buttonColor="color"
-        app:shadowColor="color"
- />
+        app:shadowColor="color" />
 ```
 
 By default, the button color is white and the shadow color is grey.
@@ -42,6 +41,7 @@ button.setShadowColor(Color.BLUE);
 
 ![image](screenshot2.png)
 
+Now, you can use this library in all versions of Android thanks to [Yoavst](https://github.com/yoavst)
 
 License
 -------
