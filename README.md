@@ -1,5 +1,7 @@
 CircularButton
 ==============
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-CircularButton-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/980)
+
 
 Circular button for Android.
 
